@@ -1,6 +1,5 @@
 {
   "name": "react-filter-url-builder",
-  "private": true,
   "version": "0.0.1",
   "type": "module",
   "description": "This is a react component that builds a url with filters",
