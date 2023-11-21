@@ -6,7 +6,7 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   build: {
     lib: {
-      entry: path.resolve("src", "src/main.tsx"),
+      entry: path.resolve("src", "components/index.tsx"),
       name: "react-filters-url-builder",
       fileName: (format) => `react-filters-url-builder.${format}.js`,
     },
