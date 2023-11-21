@@ -1,10 +1,13 @@
 {
-  "name": "react-filter-url-builder",
+  "name": "@needslist/react-filter-url-builder",
   "version": "0.0.1",
   "type": "module",
   "description": "This is a react component that builds a url with filters",
   "main": "./dist/react-filter-url-builder.umd.js",
   "module": "./dist/react-filter-url-builder.es.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": {
       "import": "./dist/react-filter-url-builder.es.js",
