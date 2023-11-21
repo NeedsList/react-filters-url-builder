@@ -1,7 +1,12 @@
-import "./App.css";
+import Greeting from "./components";
 
-function App() {
-  return <h1>REACT FILTERS URL BUILDER</h1>;
-}
+const App = () => {
+  return (
+    <>
+      <h1>REACT FILTERS URL BUILDER</h1>
+      <Greeting message="URL BUILDER" />
+    </>
+  );
+};
 
 export default App;
