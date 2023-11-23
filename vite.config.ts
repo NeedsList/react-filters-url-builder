@@ -1,23 +1,24 @@
-import path from "path";
+import { resolve } from "path";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import dts from "vite-plugin-dts";
+import { libInjectCss } from "vite-plugin-lib-inject-css";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   build: {
+    copyPublicDir: false,
     lib: {
-      entry: path.resolve("src", "./index.ts"),
-      name: "react-filters-url-builder",
-      fileName: (format) => `react-filters-url-builder.${format}.js`,
+      entry: resolve(__dirname, "lib/main.ts"),
+      formats: ["es"],
     },
     rollupOptions: {
-      external: ["react", "react-dom"],
+      external: ["react", "react/jsx-runtime"],
       output: {
-        globals: {
-          react: "React",
-        },
+        assetFileNames: "assets/[name][extname]",
+        entryFileNames: "[name].js",
       },
     },
   },
-  plugins: [react()],
+  plugins: [react(), libInjectCss(), dts({ include: ["lib"] })],
 });
