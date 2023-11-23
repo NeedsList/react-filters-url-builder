@@ -1,6 +1,6 @@
 {
   "name": "@needslist/react-filter-url-builder",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "description": "This is a react component that builds a url with filters",
   "main": "./dist/react-filter-url-builder.umd.js",
