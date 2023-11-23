@@ -1,3 +1,4 @@
 import Greeting from "./Greeting";
+import Button from "./Button";
 
-export { Greeting };
+export { Greeting, Button };

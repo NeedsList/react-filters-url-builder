@@ -1,2 +1,2 @@
 import "./index.css";
-export { Greeting } from "./components";
+export { Greeting, Button } from "./components";
