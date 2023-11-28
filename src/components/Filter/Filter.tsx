@@ -7,9 +7,9 @@ type FilterProps = PropsWithChildren & {
 	className?: string;
 };
 
-interface SubComponentsProps {
+type SubComponentsProps = {
 	Item: FC<FilterItemProps>;
-}
+};
 
 const Filter: FC<FilterProps> & SubComponentsProps = ({
 	children,
