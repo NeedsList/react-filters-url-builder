@@ -4,15 +4,14 @@ import {
   useEffect,
   useMemo,
   useState,
-  ReactNode,
+  PropsWithChildren,
 } from "react";
 
 type FilterContextType = [string, (name: string, value: string) => void];
 
 const FilterContext = createContext<FilterContextType>(["", () => {}]);
 
-type FilterProviderProps = {
-  children: ReactNode;
+type FilterProviderProps = PropsWithChildren & {
   onChange: (queryString: string) => void;
 };
 
