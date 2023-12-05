@@ -34,7 +34,7 @@ const FilterItem: FC<FilterItemProps> = ({ name, label, className }) => {
   return (
     <div ref={ref}>
       <div
-        onClick={() => setIsActive(!isActive)}
+        onClick={() => setIsActive((oldActive) => !oldActive)}
         className={cn(
           "group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50 cursor-pointer",
           className

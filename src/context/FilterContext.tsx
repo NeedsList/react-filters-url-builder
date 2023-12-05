@@ -2,6 +2,7 @@ import {
   createContext,
   useContext,
   useEffect,
+  useMemo,
   useState,
   ReactNode,
 } from "react";
@@ -44,8 +45,13 @@ const FilterProvider = ({ children, onChange }: FilterProviderProps) => {
     onChange(queryString);
   }, [queryString]);
 
+  const initialValues: FilterContextType = useMemo(
+    () => [queryString, addFilter],
+    [queryString, addFilter]
+  );
+
   return (
-    <FilterContext.Provider value={[queryString, addFilter]}>
+    <FilterContext.Provider value={initialValues}>
       {children}
     </FilterContext.Provider>
   );
