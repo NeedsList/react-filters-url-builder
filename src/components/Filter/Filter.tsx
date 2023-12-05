@@ -6,6 +6,7 @@ import { FilterProvider } from "../../context/FilterContext";
 
 type FilterProps = PropsWithChildren & {
   className?: string;
+  isOpen: boolean;
   onChange: (queryString: string) => void;
 };
 
@@ -16,18 +17,21 @@ type SubComponentsProps = {
 const Filter: FC<FilterProps> & SubComponentsProps = ({
   children,
   className,
+  isOpen = false,
   onChange,
 }) => {
   return (
     <FilterProvider onChange={onChange}>
-      <div
-        className={cn(
-          "w-screen max-w-md flex-auto overflow-hidden rounded-xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5",
-          className
-        )}
-      >
-        {children}
-      </div>
+      {isOpen && (
+        <div
+          className={cn(
+            "relative w-screen max-w-md flex-auto rounded-xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5",
+            className
+          )}
+        >
+          {children}
+        </div>
+      )}
     </FilterProvider>
   );
 };

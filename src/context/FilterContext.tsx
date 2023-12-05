@@ -15,31 +15,30 @@ type FilterProviderProps = {
   onChange: (queryString: string) => void;
 };
 
+type QSValuesTypes = Record<string, string>;
+
 const FilterProvider = ({ children, onChange }: FilterProviderProps) => {
-  const [qsValues, setQSValues] = useState({});
+  const [qsValues, setQSValues] = useState<QSValuesTypes>({});
   const [queryString, setQueryString] = useState("");
 
-  const updateQueryString = () => {
-    const newQS = Object.keys(qsValues)
-      .map((key) => `${key}=${encodeURIComponent(qsValues[key])}`)
-      .join("&");
-    setQueryString(newQS)
+  const addFilter = (name: string, value: string) => {
+    setQSValues((old) => {
+      return {
+        ...old,
+        [name]: value,
+      };
+    });
   };
 
-  const addFilter = (name: string, value: string) => {
-    if (Object.keys(qsValues)) {
-      if (qsValues[name]) {
-        setQSValues((oldValues) => ({...oldValues, qsValues[name]: value}))
-        updateQueryString()
-        return
-      }
-      setQSValues({...qsValues, [name]: value})
-      setQueryString((oldQS) => `${oldQS}&${name}=${encodeURIComponent(value)}`);
-      return
-    }
-    setQSValues({[name]: value})
-    setQueryString(`${name}=${encodeURIComponent(value)}`)
-  };
+  useEffect(() => {
+    const newQS = Object.keys(qsValues)
+      .map(
+        (key) =>
+          `${encodeURIComponent(key)}=${encodeURIComponent(qsValues[key])}`
+      )
+      .join("&");
+    setQueryString(newQS);
+  }, [qsValues]);
 
   useEffect(() => {
     onChange(queryString);
